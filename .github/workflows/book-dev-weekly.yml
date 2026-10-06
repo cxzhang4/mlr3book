@@ -24,7 +24,7 @@ jobs:
           - {dev-package: 'mlr3pipelines'}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Install dev versions
         run: remotes::install_github(c('mlr-org/${{ matrix.config.dev-package }}'))
@@ -34,11 +34,11 @@ jobs:
         run: quarto tools install chromium
 
       - name: Cache OpenML
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         id: openml-cache
         with:
           path: book/openml
-          key: ${{ runner.os }}-openml-${{ hashFiles('./book/chapters/chapter11/large-scale_benchmarking.qmd') }}-${{hashFiles('./book/chapters/appendices/solutions_large-scale_benchmarking.qmd')}}
+          key: ${{ runner.os }}-openml-${{ hashFiles('./book/chapters/chapter11/large-scale_benchmarking.qmd') }}-${{hashFiles('./book/chapters/appendices/solutions_large-scale_benchmarking.qmd')}}-${{ hashFiles('./book/chapters/chapter8/non-sequential_pipelines_and_tuning.qmd') }}
           restore-keys: ${{ runner.os }}-openml-
 
       - name: Render book
@@ -49,7 +49,7 @@ jobs:
 
       - name: Deploy netlify preview
         if: ${{ github.event_name == 'pull_request' }}
-        uses: mlr-org/actions/quarto-netlify-preview@v1.3.0
+        uses: mlr-org/actions/quarto-netlify-preview@v2
         with:
           netlify_auth_token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify_site_id: ${{ secrets.NETLIFY_SITE_ID }}

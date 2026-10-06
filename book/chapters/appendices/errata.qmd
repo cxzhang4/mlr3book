@@ -19,6 +19,7 @@ This appendix lists changes to the online version of this book to chapters inclu
 
 * Replaced reference to `Param` with `Domain`.
 * Added paragraph about `$configure()` method.
+* Replaced the `PimaIndiansDiabetes2` data set in the exercises with the `SynthDiabetes2` data set, because `mlbench` removed `PimaIndiansDiabetes2`.
 
 ## 3. Evaluation and Benchmarking
 
@@ -55,10 +56,16 @@ This appendix lists changes to the online version of this book to chapters inclu
 * Renamed `FeatureSelector` to `FeatureSelectorBatch`.
 * Add `fsi()` to the table about important functions.
 
+## 7. Sequential Pipelines
+
+* Replaced `tsk("pima")` with `tsk("diabetes")`, because the `pima` task was removed from `mlr3`.
+
 ## 8. Non-sequential Pipelines and Tuning
 
 * Reduce the number of cores to 2 in the chunking example.
 * Use `$encapsulate()` method instead of the `$encapsulate` and `$fallback` fields.
+* Replaced `tsk("pima")` with `tsk("diabetes")`, because the `pima` task was removed from `mlr3`.
+* Replaced `pos()` with named lists of `PipeOp`s in the AutoML exercise solution, because `pos()` now returns an unnamed list and `ppl("branch")` would otherwise use integer branch selection values.
 
 ## 10. Advanced Technical Aspects of mlr3
 
@@ -70,6 +77,7 @@ This appendix lists changes to the online version of this book to chapters inclu
 ## 11. Large-Scale Benchmarking
 
 * Use `$encapsulate()` method instead of the `$encapsulate` and `$fallback` fields.
+* Replaced `tsk("pima")` with `tsk("diabetes")`, because the `pima` task was removed from `mlr3`.
 
 ## 12. Model Interpretation
 
@@ -82,3 +90,8 @@ This appendix lists changes to the online version of this book to chapters inclu
 * Substitute RCLL with ISBS measure
 * Mention `pipeline_responsecompositor()` pipeline for changing predict types
 * Use `lrn("surv.xgboost.aft")` instead of `lrn("surv.glmnet")` in "Composition" subsection
+* Added a note about `pendensity` being removed from CRAN in 2026.
+
+## 14. Algorithmic Fairness
+
+* Added a seed to code chunk 7.
